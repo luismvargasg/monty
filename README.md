@@ -2,7 +2,7 @@
 
 > This directory contains all the tasks of the project "C - Stacks, Queues - LIFO, FIFO" at [Holberton School](https://www.holbertonschool.com "Holberton School.")
 
-![GitHub repo size](https://img.shields.io/github/repo-size/luismvargasg/monty?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/luismvargasg/monty?style=for-the-badge) ![GitHub contributors](https://img.shields.io/github/contributors/luismvargasg/monty?style=for-the-badge) ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fluismvargasg1) ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fmecomontes)
+![GitHub repo size](https://img.shields.io/github/repo-size/luismvargasg/monty?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/luismvargasg/monty?style=for-the-badge) ![GitHub contributors](https://img.shields.io/github/contributors/luismvargasg/monty?style=for-the-badge) [![Luis Miguel Vargas](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fluismvargasg1)](https://twitter.com/luismvargasg1) [![Robinson Montes](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fmecomontes)](https://twitter.com/mecomontes)
 
 ## Table of Contents
 
@@ -60,22 +60,22 @@ user@ubuntu:~/monty$
 
 | **opcode** | **Description** |
 |----------|-----------------|
-| [checkbox:unchecked] push | Pushes an element to the stack. |
-| [checkbox:unchecked] pall | Prints all the values on the stack, starting from the top of the stack. |
-| [checkbox:unchecked] pint | Prints the value at the top of the stack, followed by a new line. |
-| [checkbox:unchecked] pop | Removes the top element of the stack. |
-| [checkbox:unchecked] swap | Swaps the top two elements of the stack. |
-| [checkbox:unchecked] add | Adds the top two elements of the stack. |
-| [checkbox:unchecked] sub | Subtracts the top element of the stack from the second top element of the stack. |
-| [checkbox:unchecked] div | Divides the second top element of the stack by the top element of the stack. |
-| [checkbox:unchecked] mul | Multiplies the second top element of the stack with the top element of the stack. |
-| [checkbox:unchecked] mod | Computes the rest of the division of the second top element of the stack by the top element of the stack. |
-| [checkbox:unchecked] pchar | Prints the char at the top of the stack, followed by a new line. |
-| [checkbox:unchecked] pstr | Prints the string starting at the top of the stack, followed by a new line. |
-| [checkbox:unchecked] rotl | Rotates the stack to the top. |
-| [checkbox:unchecked] rotr | Rotates the stack to the bottom. |
-| [checkbox:unchecked] stack | Sets the format of the data to a stack (LIFO). This is the default behavior of the program. |
-| [checkbox:unchecked] queue | Sets the format of the data to a queue (FIFO). |
+| [ ] push | Pushes an element to the stack. |
+| [ ] pall | Prints all the values on the stack, starting from the top of the stack. |
+| [ ] pint | Prints the value at the top of the stack, followed by a new line. |
+| [ ] pop | Removes the top element of the stack. |
+| [ ] swap | Swaps the top two elements of the stack. |
+| [ ] add | Adds the top two elements of the stack. |
+| [ ] sub | Subtracts the top element of the stack from the second top element of the stack. |
+| [ ] div | Divides the second top element of the stack by the top element of the stack. |
+| [ ] mul | Multiplies the second top element of the stack with the top element of the stack. |
+| [ ] mod | Computes the rest of the division of the second top element of the stack by the top element of the stack. |
+| [ ] pchar | Prints the char at the top of the stack, followed by a new line. |
+| [ ] pstr | Prints the string starting at the top of the stack, followed by a new line. |
+| [ ] rotl | Rotates the stack to the top. |
+| [ ] rotr | Rotates the stack to the bottom. |
+| [ ] stack | Sets the format of the data to a stack (LIFO). This is the default behavior of the program. |
+| [ ] queue | Sets the format of the data to a queue (FIFO). |
 
 ## Respository Files Description
 
