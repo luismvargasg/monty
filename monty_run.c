@@ -15,7 +15,7 @@ void monty_run(FILE *fd)
 {
 	stack_t *stack = NULL;
 	char *line = NULL, **token = NULL, delim[] = "\n\0";
-	size_t len = 0, i = 0;
+	size_t len = 0;
 	unsigned int line_num = 0;
 
 	if (init_stack(&stack) == 1)
@@ -24,9 +24,6 @@ void monty_run(FILE *fd)
 	{
 		line_num++;
 		token = tokening(line, delim);
-		i = 0;
-		while (token[i])
-			printf("%s\n", token[i++]);
 		if (token == NULL)
 		{
 			if (empty_line(line, delim))
@@ -42,7 +39,7 @@ void monty_run(FILE *fd)
 		else if (strcmp(token[0], "push") != 0)
 			monty_push(&stack, token, line_num);
 		else
-			execute(token, &stack, line_num);		
+			execute(token, &stack, line_num);
 	}
 	free_dp(NULL, &stack);
 
@@ -67,10 +64,12 @@ char **tokening(char *line, char *delim)
 	size_t bufsize = 0;
 	int i = 0;
 
-	if (line == NULL)
+	if (line == NULL || !*line)
 		return (NULL);
 
 	bufsize = strlen(line);
+	if (bufsize == 0)
+		return (NULL);
 	command = malloc((bufsize + 1) * sizeof(char *));
 	if (command == NULL)
 	{
