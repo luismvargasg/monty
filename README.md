@@ -125,12 +125,12 @@ Clone this repository to get all the files you need to run this version of "mont
 
 ## Prerequisites
 
-This program was made and tested using Ubuntu 14.04.3 LTS and compiled with gcc 4.8.4. We recommend you to test this shell under this conditions.
+This program was made and tested using Ubuntu 14.04.3 LTS and compiled with gcc 4.8.4. We recommend you to test this interpreter under this conditions.
 
 ## Built With - Compilation
 
 * Ubuntu 14.04.3 LTS Running on a Virtual Machine "Vagrant"
-* gcc 4.8.4 Compiled with the flags: `-Wall -Werror -Wextra -pedantic *.c -o hsh`
+* gcc 4.8.4 Compiled with the flags: `-Wall -Werror -Wextra -pedantic *.c -o monty`
 * GNU Emacs 24.3.1
 
 
