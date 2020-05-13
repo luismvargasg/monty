@@ -23,7 +23,6 @@ int main(int ac, char **av)
 	if (fd == NULL)
 		open_error(av[1]);
 	monty_run(fd);
-	fclose(fd);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

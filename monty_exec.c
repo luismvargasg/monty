@@ -21,11 +21,13 @@ void execute(char **token, stack_t **stack, unsigned int line_num)
 	unsigned int i = 0;
 
 	instruction_t op[] = {
+		{"pall", monty_pall},
 		{"null", NULL}
 	};
+
 	while (op[i].opcode)
 	{
-		if (strcmp(op[i].opcode, token[i]) == 0)
+		if (*(op[i].opcode) == *(token[0]))
 		{
 			op[i].f(stack, line_num);
 			break;
@@ -85,17 +87,21 @@ void monty_push(stack_t **stack, char **token, unsigned int line_num)
 	if (tmp)
 		tmp->prev = new;
 	(*stack)->next = new;
+	free(push);
+	free(token);
 }
 
 /**
  * monty_pall - A function that prints the values of the stack_t.
  * @stack: The pointer to the top of a stack_t.
+ * @line_num: Line number.
  */
-void monty_pall(const stack_t *stack)
+void monty_pall(stack_t **stack, unsigned int line_num)
 {
-	stack_t *tmp = stack->next;
+	stack_t *tmp = (*stack)->next;
+	(void)line_num;
 
-	while (tmp)
+	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;

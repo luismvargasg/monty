@@ -36,13 +36,13 @@ void monty_run(FILE *fd)
 			free_dp(token, NULL);
 			continue;
 		}
-		else if (strcmp(token[0], "push") != 0)
+		else if (strncmp(token[0], "push", 4) == 0)
 			monty_push(&stack, token, line_num);
 		else
 			execute(token, &stack, line_num);
 	}
-	free_dp(NULL, &stack);
-
+	free_dp(token, &stack);
+	fclose(fd);
 	if (line && *line == 0)
 	{
 		free(line);
@@ -74,7 +74,7 @@ char **tokening(char *line, char *delim)
 	if (command == NULL)
 	{
 		free(line);
-		free_dp(command, NULL);
+		free(command);
 		usage_error(0);
 	}
 	tokens = strtok(line, delim);
@@ -83,6 +83,7 @@ char **tokening(char *line, char *delim)
 		command[i] = malloc(strlen(tokens) + 1);
 		if (command[i] == NULL)
 		{
+			free(line);
 			free_dp(command, NULL);
 			usage_error(0);
 		}
