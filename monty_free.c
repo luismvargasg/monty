@@ -16,14 +16,19 @@
 
 void free_dp(char **token, stack_t **stack)
 {
-	stack_t temp;
+	stack_t *tmp = *stack;
+	size_t i = 0;
 
+	if (token == NULL)
+		return;
+	for (i = 0; token[i]; i++)
+		free(token[i]);
 	free(token);
 
-	if (stack != NULL)
+	while (*stack)
 	{
-		temp = *stack;
-		*stack = stack->next;
-		free(temp);
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
 }

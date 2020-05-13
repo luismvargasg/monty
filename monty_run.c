@@ -13,17 +13,19 @@
  */
 void monty_run(FILE *fd)
 {
-	stack_t *stack = NULL;
-	char *line = NULL, **token;
+	stack_t **stack = NULL;
+	char *line = NULL, **token, delim[] = " \n\t\a\b";
 	size_t len = 0, line_num = 0;
 
 	while (getline(&line, &len, fd) != -1)
 	{
 		line_num++;
-		token = tokening(line, " \n\t\a\b");
+		token = tokening(line);
 		if (token == NULL)
 		{
-			free_dp(stack, NULL);
+			if (empty_line(line, delim))
+				continue;
+			free_dp(NULL, stack);
 			usage_error(0);
 		}
 		else if (token[0][0] == '#')
@@ -31,12 +33,12 @@ void monty_run(FILE *fd)
 			free_dp(token, NULL);
 			continue;
 		}
-		else if (token[0] == "push")
+		else if (strcmp(token[0], "push") != 0)
 			monty_push(stack, token, line_num);
 		else
 			execute(token, stack, line_num);
 	}
-	free(stack);
+	free_dp(NULL, stack);
 
 	if (line && *line == 0)
 	{
@@ -62,28 +64,52 @@ char **tokening(char *line)
 		return (NULL);
 
 	bufsize = strlen(line);
-	commands = malloc((bufsize + 1) * sizeof(char *));
-	if (commands == NULL)
+	command = malloc((bufsize + 1) * sizeof(char *));
+	if (command == NULL)
 	{
 		free(line);
-		free_dp(commands, NULL);
+		free_dp(command, NULL);
 		usage_error(0);
 	}
 
 	tokens = strtok(line, " \n\t\a\b");
 	while (tokens != NULL)
 	{
-		commands[i] = malloc(strlen(tokens) + 1);
-		if (commands[i] == NULL)
+		command[i] = malloc(strlen(tokens) + 1);
+		if (command[i] == NULL)
 		{
-			free_dp(commands);
+			free_dp(command, NULL);
 			usage_error(0);
 			return (NULL);
 		}
-		strcpy(commands[i], tokens);
-		token = strtok(NULL, " \n\t\a\b");
+		strcpy(command[i], tokens);
+		tokens = strtok(NULL, " \n\t\a\b");
 		i++;
 	}
-	commands[i] = NULL;
-	return (commands);
+	command[i] = NULL;
+	return (command);
+}
+
+/**
+ * empty_line - A function that checks if line only contains delimiters.
+ * @line: The pointer to the line.
+ * @delims: The string with delimiter characters.
+ * Return: 1 if the line only contains delimiters, otherwise 0.
+ */
+int empty_line(char *line, char *delims)
+{
+	int i, j;
+
+	for (i = 0; line[i]; i++)
+	{
+		for (j = 0; delims[j]; j++)
+		{
+			if (line[i] == delims[j])
+				break;
+		}
+		if (delims[j] == '\0')
+			return (0);
+	}
+
+	return (1);
 }

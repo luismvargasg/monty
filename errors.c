@@ -13,7 +13,7 @@
  */
 void usage_error(int flag)
 {
-	char errors[2] = {"Error: malloc failed", "USAGE: monty file"};
+	char *errors[2] = {"Error: malloc failed", "USAGE: monty file"};
 
 	fprintf(stderr, "%s\n", errors[flag]);
 	exit(EXIT_FAILURE);

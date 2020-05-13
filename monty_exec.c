@@ -16,7 +16,7 @@
  * Return: Nothing.
  */
 
-void execute(char **token, stack_t *stack, unsigned int line_num)
+void execute(char **token, stack_t **stack, unsigned int line_num)
 {
 	unsigned int i = 0;
 
@@ -25,16 +25,18 @@ void execute(char **token, stack_t *stack, unsigned int line_num)
 	};
 	while (op[i].opcode != NULL)
 	{
-		if (*(op[i].opcode) == *token)
+		if (strcmp(op[i].opcode, token[i]) == 0)
 		{
-			op[i].f(&stack, line_num)
-				break;
+			op[i].f(stack, line_num);
+			break;
 		}
 		i++;
 	}
 	if (op[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%i: unknown instruction %s\n", line_num, token);
+		free_dp(NULL, stack);
+		fprintf(stderr, "L%i: unknown instruction %s\n", line_num,
+				token[i]);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -48,25 +50,54 @@ void execute(char **token, stack_t *stack, unsigned int line_num)
   */
 void monty_push(stack_t **stack, char **token, unsigned int line_num)
 {
-	stack_t *temp = NULL;
-	int i = 0;
+	stack_t *tmp, *new;
+	int i;
 
-	while (token[1][i++])
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
 	{
-		if (token[1][i] <= '0' || token[1][i] >= '9')
+		usage_error(0);
+		return;
+	}
+
+	if (token[1] == NULL)
+	{
+		f_errors(0, line_num);
+		return;
+	}
+
+	for (i = 0; token[1][i]; i++)
+	{
+		if (token[1][i] == '-' && i == 0)
+			continue;
+		if (token[1][i] < '0' || token[1][i] > '9')
 		{
 			free_dp(token, stack);
-			f_error(0);
+			f_errors(0, line_num);
+			return;
 		}
 	}
-	temp->prev = NULL;
-	temp->n = atoi(token[1]);
-	if (stack || *stack)
-		temp->next = NULL;
-	else
+	new->n = atoi(token[1]);
+
+	tmp = (*stack)->next;
+	new->prev = *stack;
+	new->next = tmp;
+	if (tmp)
+		tmp->prev = new;
+	(*stack)->next = new;
+}
+
+/**
+ * monty_pall - A function that prints the values of the stack_t.
+ * @stack: The pointer to the top of a stack_t.
+ */
+void monty_pall(stack_t **stack)
+{
+	stack_t *tmp = (*stack)->next;
+
+	while (tmp)
 	{
-		temp->next = *stack;
-		(*stack)->prev = temp;
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
 	}
-	free_dp(token, NULL);
 }

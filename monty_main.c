@@ -10,9 +10,9 @@
  * main - The entry point function for Monty Interpreter.
  * @ac: The number of arguments.
  * @av: The pointer to an array of inputed arguments.
- * Return: Nothing.
+ * Return: Always 0 (on Success).
  */
-void main(int ac, char **av)
+int main(int ac, char **av)
 {
 	FILE *fd = NULL;
 
@@ -25,4 +25,5 @@ void main(int ac, char **av)
 	monty_run(fd);
 	fclose(fd);
 	exit(EXIT_SUCCESS);
+	return (0);
 }

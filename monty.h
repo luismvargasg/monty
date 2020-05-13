@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <string.h>
+#include <sys/stat.h>
 
 /*==========================================================================*/
 /*==========================     DATA STRUCTURES    ========================*/
@@ -43,11 +44,14 @@ typedef struct instruction_s
 /*=========================   OPCODE FUNCTIONS  ===========================*/
 /*=========================================================================*/
 
-void main(int ac, char **av);
+int main(int ac, char **av);
 void monty_run(FILE *fd);
 char **tokening(char *line);
-void execute(char **token, stack_t *stack, unsigned int line_num);
+void execute(char **token, stack_t **stack, unsigned int line_num);
 void monty_push(stack_t **stack, char **token, unsigned int line_num);
+void free_dp(char **token, stack_t **stack);
+int empty_line(char *line, char *delims);
+void monty_pall(stack_t **stack);
 
 /*=========================================================================*/
 /*=========================        ERRORS       ===========================*/
