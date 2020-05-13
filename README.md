@@ -60,22 +60,22 @@ user@ubuntu:~/monty$
 
 | **opcode** | **Description** |
 |----------|-----------------|
-| - [ ] push | Pushes an element to the stack. |
-| - [ ] pall | Prints all the values on the stack, starting from the top of the stack. |
-| - [ ] pint | Prints the value at the top of the stack, followed by a new line. |
-| - [ ] pop | Removes the top element of the stack. |
-| - [ ] swap | Swaps the top two elements of the stack. |
-| - [ ] add | Adds the top two elements of the stack. |
-| - [ ] sub | Subtracts the top element of the stack from the second top element of the stack. |
-| - [ ] div | Divides the second top element of the stack by the top element of the stack. |
-| - [ ] mul | Multiplies the second top element of the stack with the top element of the stack. |
-| - [ ] mod | Computes the rest of the division of the second top element of the stack by the top element of the stack. |
-| - [ ] pchar | Prints the char at the top of the stack, followed by a new line. |
-| - [ ] pstr | Prints the string starting at the top of the stack, followed by a new line. |
-| - [ ] rotl | Rotates the stack to the top. |
-| - [ ] rotr | Rotates the stack to the bottom. |
-| - [ ] stack | Sets the format of the data to a stack (LIFO). This is the default behavior of the program. |
-| - [ ] queue | Sets the format of the data to a queue (FIFO). |
+| <li>[ ] push</li></ul> | Pushes an element to the stack. |
+| <li>[ ] pall</li></ul> | Prints all the values on the stack, starting from the top of the stack. |
+| <li>[ ] pint</li></ul> | Prints the value at the top of the stack, followed by a new line. |
+| <li>[ ] pop</li></ul> | Removes the top element of the stack. |
+| <li>[ ] swap</li></ul> | Swaps the top two elements of the stack. |
+| <li>[ ] add</li></ul> | Adds the top two elements of the stack. |
+| <li>[ ] sub</li></ul> | Subtracts the top element of the stack from the second top element of the stack. |
+| <li>[ ] div</li></ul> | Divides the second top element of the stack by the top element of the stack. |
+| <li>[ ] mul</li></ul> | Multiplies the second top element of the stack with the top element of the stack. |
+| <li>[ ] mod</li></ul> | Computes the rest of the division of the second top element of the stack by the top element of the stack. |
+| <li>[ ] pchar</li></ul> | Prints the char at the top of the stack, followed by a new line. |
+| <li>[ ] pstr</li></ul> | Prints the string starting at the top of the stack, followed by a new line. |
+| <li>[ ] rotl</li></ul> | Rotates the stack to the top. |
+| <li>[ ] rotr</li></ul> | Rotates the stack to the bottom. |
+| <li>[ ] stack</li></ul> | Sets the format of the data to a stack (LIFO). This is the default behavior of the program. |
+| <li>[ ] queue</li></ul> | Sets the format of the data to a queue (FIFO). |
 
 ## Respository Files Description
 
