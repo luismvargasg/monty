@@ -1,5 +1,5 @@
 /*
- * File name:   monty_main.c
+ * File name:   monty_exec.c
  * Authors:     Luis Miguel Vargas
  *              Robinson Montes
  */
