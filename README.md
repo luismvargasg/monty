@@ -136,8 +136,8 @@ This program was made and tested using Ubuntu 14.04.3 LTS and compiled with gcc 
 
 # AUTHORS
 
-Luis Miguel Vargas - [@luismvargasg](https://github.com/luismvargasg)
-Robinson Montes - [@mecomonteshbtn](https://github.com/mecomonteshbtn)
+* **Luis Miguel Vargas** - [Github @luismvargasg](https://github.com/luismvargasg)
+* **Robinson Montes** - [GitHub @mecomonteshbtn](https://github.com/mecomonteshbtn)
 
 ## License
 
