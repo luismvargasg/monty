@@ -38,6 +38,13 @@ void open_error(char *filename)
  */
 void f_errors(int flag, int line_num)
 {
-	char errors[] = ["usage: push integer", "can\'t pint, stack empty", 
-"can\'t pop an empty stack", "can\'t swap, stack too short", "can\'t add,
- stack too short", "can\'t sub, stack too short", "can\'t add, stack too short"]
+	char errors[] = ["usage: push integer", "can\'t pint, stack empty",
+	     "can\'t pop an empty stack", "can\'t swap, stack too short",
+	     "can\'t add, stack too short", "can\'t sub, stack too short",
+	     "can\'t div, stack too short", "division by zero", "can\'t mul,
+	     stack too short", "can\'t mod, stack too short", "can\'t pchar,
+	     value out of range", "can\'t pchar, stack empty"];
+
+	fprintf(stderr, "L%d: %s\n", line_num, errors[flag]);
+	exit(EXIT_FAILURE);
+}

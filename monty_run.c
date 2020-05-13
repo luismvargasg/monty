@@ -14,30 +14,31 @@
 void monty_run(FILE *fd)
 {
 	stack_t *stack = NULL;
-	char *line = NULL;
-	size_t len = 0, line_count = 0;
+	char *line = NULL, **token;
+	size_t len = 0, line_num = 0;
 
 	while (getline(&line, &len, fd) != -1)
 	{
-		line_count++;
-		tokens = strtow(line, " \n\t\a\b");
-		if (tokens == NULL)
+		line_num++;
+		token = strtok(line, " \n\t\a\b");
+		if (token == NULL)
 		{
 			free(stack);
-			malloc_error();
+			usage_error(0);
 		}
-		else if (tokens[0][0] == '#')
+		else if (token[0][0] == '#')
 		{
-			free(tokens);
+			free(token);
 			continue;
 		}
+		execute(token, stack, line_num);
 	}
 	free(stack);
 
 	if (line && *line == 0)
 	{
 		free(line);
-		malloc_error();
+		usage_error(0);
 	}
 	free(line);
 	exit(EXIT_SUCCESS);

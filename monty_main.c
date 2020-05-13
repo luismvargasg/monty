@@ -1,8 +1,9 @@
 /*
- * File name: 	monty_main.c
- * Authors:	Robinson Montes
- * 		Luis Miguel Vargas
+ * File name:	monty_main.c
+ * Authors:	Luis Miguel Vargas
+ *		Robinson Montes
  */
+
 #include "monty.h"
 
 /**
@@ -16,11 +17,11 @@ void main(int ac, char **av)
 	FILE *fd = NULL;
 
 	if (ac != 2)
-		usage_error();
+		usage_error(1);
 	fd = fopen(av[1], "r");
 
 	if (fd == NULL)
-		open_error(argv[1]);
+		open_error(av[1]);
 	monty_run(fd);
 	fclose(fd);
 	exit(EXIT_SUCCESS);
