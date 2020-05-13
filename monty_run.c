@@ -15,7 +15,7 @@ void monty_run(FILE *fd)
 {
 	stack_t **stack = NULL;
 	char *line = NULL, **token, delim[] = "\n";
-	size_t len = 0;
+	size_t len = 0, i = 0;
 	unsigned int line_num = 0;
 
 	while (getline(&line, &len, fd) != -1)
@@ -24,6 +24,9 @@ void monty_run(FILE *fd)
 		line[strlen(line) - 1] = '\0';
 		token = tokening(line, delim);
 		free(line);
+		i = 0;
+		while (token[i])
+			printf("%s\n", token[i++]);
 		if (token == NULL)
 		{
 			if (empty_line(line, delim))

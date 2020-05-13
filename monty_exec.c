@@ -51,7 +51,8 @@ void execute(char **token, stack_t **stack, unsigned int line_num)
 void monty_push(stack_t **stack, char **token, unsigned int line_num)
 {
 	stack_t *tmp, *new;
-	int i;
+	char **push = NULL;
+	int i = 0;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -59,26 +60,30 @@ void monty_push(stack_t **stack, char **token, unsigned int line_num)
 		usage_error(0);
 		return;
 	}
-
-	if (token[1] == NULL)
+	push = tokening(token[0], " \0");
+	printf("Hola  %s\n", push[0]);
+	printf("bobb  %s\n", push[1]);
+	if (push[1] == NULL)
 	{
 		f_errors(0, line_num);
 		return;
 	}
-
-	for (i = 0; token[1][i]; i++)
+	printf("#char  %lu\n", strlen(push[1]));
+	push[1][strlen(push[1]) - 1] = '\0';
+	while (push[1][i])
 	{
-		if (token[1][i] == '-' && i == 0)
+		if (push[1][i] == '-' && i == 0)
 			continue;
-		if (token[1][i] < '0' || token[1][i] > '9')
+		if (push[1][i] < '0' || push[1][i] > '9')
 		{
-			free_dp(token, stack);
+			free_dp(push, stack);
 			f_errors(0, line_num);
 			return;
 		}
+		i++;
 	}
-	new->n = atoi(token[1]);
-
+	new->n = atoi(push[1]);
+	printf("atoi %d\n", atoi(push[1]));
 	tmp = (*stack)->next;
 	new->prev = *stack;
 	new->next = tmp;
