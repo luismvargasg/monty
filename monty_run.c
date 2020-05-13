@@ -31,6 +31,9 @@ void monty_run(FILE *fd)
 			free(token);
 			continue;
 		}
+		else if (token[0] == "push")
+		{
+
 		execute(token, stack, line_num);
 	}
 	free(stack);
