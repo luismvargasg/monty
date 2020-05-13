@@ -14,13 +14,16 @@
 void monty_run(FILE *fd)
 {
 	stack_t **stack = NULL;
-	char *line = NULL, **token, delim[] = " \n\t\a\b";
-	size_t len = 0, line_num = 0;
+	char *line = NULL, **token, delim[] = "\n";
+	size_t len = 0;
+	unsigned int line_num = 0;
 
 	while (getline(&line, &len, fd) != -1)
 	{
 		line_num++;
-		token = tokening(line);
+		line[strlen(line) - 1] = '\0';
+		token = tokening(line, delim);
+		free(line);
 		if (token == NULL)
 		{
 			if (empty_line(line, delim))
@@ -37,6 +40,7 @@ void monty_run(FILE *fd)
 			monty_push(stack, token, line_num);
 		else
 			execute(token, stack, line_num);
+		line = NULL, len = 0;
 	}
 	free_dp(NULL, stack);
 
@@ -52,9 +56,10 @@ void monty_run(FILE *fd)
 /**
  * tokening - A function that split the line.
  * @line: The pointer to bytecode line.
+ * @delim: Array with 5 delimiters " \n\t\a\b".
  * Return: The pointer to tokens.
  */
-char **tokening(char *line)
+char **tokening(char *line, char *delim)
 {
 	char *tokens = NULL, **command = NULL;
 	size_t bufsize = 0;
@@ -71,8 +76,7 @@ char **tokening(char *line)
 		free_dp(command, NULL);
 		usage_error(0);
 	}
-
-	tokens = strtok(line, " \n\t\a\b");
+	tokens = strtok(line, delim);
 	while (tokens != NULL)
 	{
 		command[i] = malloc(strlen(tokens) + 1);
@@ -80,10 +84,9 @@ char **tokening(char *line)
 		{
 			free_dp(command, NULL);
 			usage_error(0);
-			return (NULL);
 		}
 		strcpy(command[i], tokens);
-		tokens = strtok(NULL, " \n\t\a\b");
+		tokens = strtok(NULL, delim);
 		i++;
 	}
 	command[i] = NULL;
