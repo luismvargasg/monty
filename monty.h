@@ -45,6 +45,7 @@ typedef struct instruction_s
 
 void main(int ac, char **av);
 void monty_run(FILE *fd);
+char **tokening(char *line);
 void execute(char **token, stack_t *stack, unsigned int line_num);
 void monty_push(stack_t **stack, char **token, unsigned int line_num);
 
