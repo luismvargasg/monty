@@ -16,7 +16,7 @@
  * Return: Nothing.
  */
 
-void execute(char **token, stact_t *stack, int line_num)
+void execute(char **token, stack_t *stack, int line_num)
 {
 	unsigned int i = 0;
 

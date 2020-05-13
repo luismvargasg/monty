@@ -66,6 +66,7 @@ user@ubuntu:~/monty$
 | <ul><li>[ ] pop</li></ul> | Removes the top element of the stack. |
 | <ul><li>[ ] swap</li></ul> | Swaps the top two elements of the stack. |
 | <ul><li>[ ] add</li></ul> | Adds the top two elements of the stack. |
+| <ul><li>[ ] nop</li></ul> | Doesn\'t do anything. |
 | <ul><li>[ ] sub</li></ul> | Subtracts the top element of the stack from the second top element of the stack. |
 | <ul><li>[ ] div</li></ul> | Divides the second top element of the stack by the top element of the stack. |
 | <ul><li>[ ] mul</li></ul> | Multiplies the second top element of the stack with the top element of the stack. |
