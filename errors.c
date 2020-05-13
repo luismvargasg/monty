@@ -8,21 +8,14 @@
 
 /**
  * usage_error - Afunction that prints usage error message.
+ * @flag: Type of error: 0 malloc'd failed, or 1 usage.
  * Return: Nothing
  */
-int usage_error(void)
+void usage_error(int flag)
 {
-	fprintf(stderr, "USAGE: monty file\n");
-	exit(EXIT_FAILURE);
-}
+	char errors[2] = ["Error: malloc failed", "USAGE: monty file"];
 
-/**
- * malloc_error - A function that prints malloc error message.
- * Return: Nothing.
- */
-int malloc_error(void)
-{
-	fprintf(stderr, "Error: malloc failed\n");
+	fprintf(stderr, "%s\n", errors[flag]);
 	exit(EXIT_FAILURE);
 }
 
@@ -31,8 +24,20 @@ int malloc_error(void)
  * @filename: Name of file failed to open.
  * Return: Nothing.
  */
-int f_open_error(char *filename)
+void open_error(char *filename)
 {
 	fprintf(stderr, "Error: Can't open file %s\n", filename);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * f_errors - A function that print the errors.
+ * @flag: The index to type of error.
+ * @line_num: The number of line in file with error.
+ * Return: Nothing.
+ */
+void f_errors(int flag, int line_num)
+{
+	char errors[] = ["usage: push integer", "can\'t pint, stack empty", 
+"can\'t pop an empty stack", "can\'t swap, stack too short", "can\'t add,
+ stack too short", "can\'t sub, stack too short", "can\'t add, stack too short"]

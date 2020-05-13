@@ -11,19 +11,20 @@
  * @fd: File descriptor for an open Monty bytecodes script.
  * Return: EXIT_SUCCESS on success, or EXIT_FAILURE on error.
  */
-int monty_run(FILE *fd)
+void monty_run(FILE *fd)
 {
 	stack_t *stack = NULL;
 	char *line = NULL;
-	size_t len = 0;
+	size_t len = 0, line_count = 0;
 
 	while (getline(&line, &len, fd) != -1)
 	{
+		line_count++;
 		tokens = strtow(line, " \n\t\a\b");
 		if (tokens == NULL)
 		{
 			free(stack);
-			return (malloc_error());
+			malloc_error();
 		}
 		else if (tokens[0][0] == '#')
 		{
@@ -36,7 +37,7 @@ int monty_run(FILE *fd)
 	if (line && *line == 0)
 	{
 		free(line);
-		return (malloc_error());
+		malloc_error();
 	}
 	free(line);
 	exit(EXIT_SUCCESS);
