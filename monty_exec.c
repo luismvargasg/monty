@@ -23,7 +23,7 @@ void execute(char **token, stack_t **stack, unsigned int line_num)
 	instruction_t op[] = {
 		{"null", NULL},
 	};
-	while (op[i].opcode != NULL)
+	while (op[i].opcode)
 	{
 		if (strcmp(op[i].opcode, token[i]) == 0)
 		{

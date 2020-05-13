@@ -13,17 +13,17 @@
  */
 void monty_run(FILE *fd)
 {
-	stack_t **stack = NULL;
-	char *line = NULL, **token, delim[] = "\n";
+	stack_t *stack = NULL;
+	char *line = NULL, **token = NULL, delim[] = "\n\0";
 	size_t len = 0, i = 0;
 	unsigned int line_num = 0;
 
+	if (init_stack(&stack) == 1)
+		exit(EXIT_FAILURE);
 	while (getline(&line, &len, fd) != -1)
 	{
 		line_num++;
-		line[strlen(line) - 1] = '\0';
 		token = tokening(line, delim);
-		free(line);
 		i = 0;
 		while (token[i])
 			printf("%s\n", token[i++]);
@@ -31,7 +31,7 @@ void monty_run(FILE *fd)
 		{
 			if (empty_line(line, delim))
 				continue;
-			free_dp(NULL, stack);
+			free_dp(NULL, &stack);
 			usage_error(0);
 		}
 		else if (token[0][0] == '#')
@@ -40,12 +40,11 @@ void monty_run(FILE *fd)
 			continue;
 		}
 		else if (strcmp(token[0], "push") != 0)
-			monty_push(stack, token, line_num);
+			monty_push(&stack, token, line_num);
 		else
-			execute(token, stack, line_num);
-		line = NULL, len = 0;
+			execute(token, &stack, line_num);		
 	}
-	free_dp(NULL, stack);
+	free_dp(NULL, &stack);
 
 	if (line && *line == 0)
 	{
@@ -118,4 +117,27 @@ int empty_line(char *line, char *delims)
 	}
 
 	return (1);
+}
+
+/**
+ * init_stack - A function that initializes a stack_t stack with beginning
+ *              stack and ending queue nodes.
+ * @stack: A pointer to an unitialized stack_t stack.
+ * Return: 1 If an error occurs, or 0 in Otherwise.
+ */
+int init_stack(stack_t **stack)
+{
+	stack_t *s;
+
+	s = malloc(sizeof(stack_t));
+	if (s == NULL)
+		usage_error(0);
+
+	s->n = STACK;
+	s->prev = NULL;
+	s->next = NULL;
+
+	*stack = s;
+
+	return (0);
 }

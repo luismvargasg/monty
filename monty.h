@@ -7,6 +7,9 @@
 #include <string.h>
 #include <sys/stat.h>
 
+#define STACK 0
+#define QUEUE 1
+
 /*==========================================================================*/
 /*==========================     DATA STRUCTURES    ========================*/
 /*==========================================================================*/
@@ -52,6 +55,7 @@ void monty_push(stack_t **stack, char **token, unsigned int line_num);
 void free_dp(char **token, stack_t **stack);
 int empty_line(char *line, char *delims);
 void monty_pall(stack_t **stack);
+int init_stack(stack_t **stack);
 
 /*=========================================================================*/
 /*=========================        ERRORS       ===========================*/
