@@ -29,7 +29,7 @@ int execute(char **token, stack_t **stack, unsigned int line_num)
 		{"null", NULL}
 	};
 
-	for (i = 0; i <= 1; i++)
+	for (i = 0; i <= 7; i++)
 	{
 		if (*(op[i].opcode) == *(token[0]))
 		{

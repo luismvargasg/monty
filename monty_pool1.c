@@ -1,8 +1,8 @@
-/**
-  * File name:	func_pool1.c
-  * Authors:	Luis Miguel Vargas
-  *		Robinson Montes
-  */
+/*
+ * File name:	func_pool1.c
+ * Authors:	Luis Miguel Vargas
+ *		Robinson Montes
+ */
 
 #include "monty.h"
 
@@ -81,7 +81,7 @@ void monty_add(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
-		f_errors(4,line_number);
+		f_errors(4, line_number);
 		return;
 	}
 
