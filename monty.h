@@ -48,21 +48,22 @@ typedef struct instruction_s
 /*=========================================================================*/
 
 int main(int ac, char **av);
-void monty_run(FILE *fd);
+int monty_run(FILE *fd);
 char **tokening(char *line, char *delim);
-void execute(char **token, stack_t **stack, unsigned int line_num);
-void monty_push(stack_t **stack, char **token, unsigned int line_num);
-void free_dp(char **token, stack_t **stack);
+int execute(char **token, stack_t **stack, unsigned int line_num);
+int monty_push(stack_t **stack, char **token, unsigned int line_num);
+void free_stack(stack_t **stack);
+void free_token(char **token);
 int empty_line(char *line, char *delims);
-void monty_pall(stack_t **stack, unsigned int line_num);
+int monty_pall(stack_t **stack, unsigned int line_num);
 int init_stack(stack_t **stack);
 
 /*=========================================================================*/
 /*=========================        ERRORS       ===========================*/
 /*=========================================================================*/
 
-void usage_error(int flag);
-void open_error(char *filename);
-void f_errors(int flag, unsigned int line_num);
+int usage_error(int flag);
+int open_error(char *filename);
+int f_errors(int flag, unsigned int line_num);
 
 #endif /* __MONTY_H__ */
