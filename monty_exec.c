@@ -53,22 +53,17 @@ int execute(char **token, stack_t **stack, unsigned int line_num)
 int monty_push(stack_t **stack, char **token, unsigned int line_num)
 {
 	stack_t *new;
-	char **push = NULL;
 	int i = 0;
 
-	push = tokening(token[0], " \0");
-	if (push[1] == NULL)
-		return (f_errors(0, line_num));
-
-	while (push[1][i])
+	while (token[1][i])
 	{
-		if (push[1][i] == '-' && i == 0)
-			continue;
-
-		if (push[1][i] < '0' || push[1][i] > '9')
+		if (token[1][i] == '-' && i == 0)
 		{
-			free(push);
-			free(token);
+			i++;
+			continue;
+		}
+		if (token[1][i] < '0' || token[1][i] > '9')
+		{
 			free_stack(stack);
 			return (f_errors(0, line_num));
 		}
@@ -79,13 +74,12 @@ int monty_push(stack_t **stack, char **token, unsigned int line_num)
 	if (new == NULL)
 		return (usage_error(0));
 
-	new->n = atoi(push[1]);
+	new->n = atoi(token[1]);
 	if ((*stack) != NULL)
 		(*stack)->prev = new;
 	new->next = *stack;
 	new->prev = NULL;
 	*stack = new;
-	free(push);
 	free(token);
 	return (EXIT_SUCCESS);
 }

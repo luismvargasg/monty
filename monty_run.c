@@ -14,7 +14,7 @@
 int monty_run(FILE *fd)
 {
 	stack_t *stack = NULL;
-	char *line = NULL, **token = NULL, delim[] = "\n\0";
+	char *line = NULL, **token = NULL, delim[] = " \n\t\a\b";
 	size_t len = 0;
 	unsigned int line_num = 0, exit_status = EXIT_SUCCESS;
 
@@ -37,15 +37,17 @@ int monty_run(FILE *fd)
 		else if (strncmp(token[0], "push", 4) == 0)
 			exit_status = monty_push(&stack, token, line_num);
 		else
-			exit_status = execute(token, &stack, line_num);
+		{
+			execute(token, &stack, line_num);
+			free(token);
+		}
+		if (exit_status == EXIT_FAILURE)
+		{
+			free(token);
+			break;
+		}
 	}
-	free(token);
 	free_stack(&stack);
-	if (line && *line == 0)
-	{
-		free(line);
-		return (usage_error(0));
-	}
 	free(line);
 	return (exit_status);
 }
