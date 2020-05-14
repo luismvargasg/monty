@@ -44,19 +44,34 @@ typedef struct instruction_s
 /*=========================   OPCODE FUNCTIONS  ===========================*/
 /*=========================================================================*/
 
+/* monty_main.c */
 int main(int ac, char **av);
+
+/* monty_free.c */
+void free_stack(stack_t **stack);
+
+/* monty_run.c */
 int monty_run(FILE *fd);
 char **tokening(char *line, char *delim);
+ int empty_line(char *line, char *delims);
+
+/* monty_exec.c */
 int execute(char **token, stack_t **stack, unsigned int line_num);
 int monty_push(stack_t **stack, char **token, unsigned int line_num);
-void free_stack(stack_t **stack);
-int empty_line(char *line, char *delims);
 void monty_pall(stack_t **stack, unsigned int line_num);
+
+/* monty_pool1.c */
+void monty_pint(stack_t **stack, unsigned int line_num);
+void monty_pop(stack_t **stack, unsigned int line_num);
+void monty_swap(stack_t **stack, unsigned int line_num);
+void monty_sub(stack_t **stack, unsigned int line_num);
+void monty_add(stack_t **stack, unsigned int line_num);
 
 /*=========================================================================*/
 /*=========================        ERRORS       ===========================*/
 /*=========================================================================*/
 
+/* monty_errors.c */
 int usage_error(int flag);
 int open_error(char *filename);
 int f_errors(int flag, unsigned int line_num);

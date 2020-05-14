@@ -21,10 +21,15 @@ int execute(char **token, stack_t **stack, unsigned int line_num)
 
 	instruction_t op[] = {
 		{"pall", monty_pall},
+		{"pint", monty_pint},
+		{"pop", monty_pop},
+		{"swap", monty_swap},
+		{"add", monty_add},
+		{"sub", monty_sub},
 		{"null", NULL}
 	};
 
-	for (i = 0; i <= 1; i++)
+	for (i = 0; i <= 7; i++)
 	{
 		if (*(op[i].opcode) == *(token[0]))
 		{
