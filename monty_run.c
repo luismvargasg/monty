@@ -21,23 +21,16 @@ int monty_run(FILE *fd)
 	while (getline(&line, &len, fd) != -1)
 	{
 		line_num++;
+		if (empty_line(line, delim))
+			continue;
 		token = tokening(line, delim);
-		if (token == NULL)
-		{
-			if (empty_line(line, delim))
-				continue;
-			free_stack(&stack);
-			return (usage_error(0));
-		}
-		else if (token[0][0] == '#')
+		if (token[0][0] == '#' || strncmp(token[0], "nop", 3) == 0)
 		{
 			free(token);
 			continue;
 		}
 		else if (strncmp(token[0], "push", 4) == 0)
 			exit_status = monty_push(&stack, token, line_num);
-		else if (strncmp(token[0], "nop", 3) == 0)
-			continue;
 		else
 			exit_status = execute(token, &stack, line_num);
 		free(token);

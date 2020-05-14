@@ -120,3 +120,16 @@ echo "HBTN: push and rotl"
 ./monty bytecodes/35.m
 echo " ---exit = 0"
 echo $?
+
+echo "**********     bytecode  15.m   **************"
+echo "HBTN: #"
+./monty bytecodes/15.m
+echo " ---exit = 0"
+echo $?
+
+echo "**********     bytecode  16.m   **************"
+echo "HBTN: nop"
+./monty bytecodes/16.m
+echo " ---exit = 0"
+echo $?
+
