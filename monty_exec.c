@@ -54,6 +54,8 @@ int monty_push(stack_t **stack, char **token, unsigned int line_num)
 	stack_t *new;
 	int i = 0;
 
+	if (token[1] == NULL)
+		return (f_errors(0, line_num));
 	while (token[1][i])
 	{
 		if (token[1][i] == '-' && i == 0)
