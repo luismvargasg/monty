@@ -37,15 +37,10 @@ int monty_run(FILE *fd)
 		else if (strncmp(token[0], "push", 4) == 0)
 			exit_status = monty_push(&stack, token, line_num);
 		else
-		{
-			execute(token, &stack, line_num);
-			free(token);
-		}
+			exit_status = execute(token, &stack, line_num);
+		free(token);
 		if (exit_status == EXIT_FAILURE)
-		{
-			free(token);
 			break;
-		}
 	}
 	free_stack(&stack);
 	free(line);

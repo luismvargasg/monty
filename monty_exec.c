@@ -24,23 +24,17 @@ int execute(char **token, stack_t **stack, unsigned int line_num)
 		{"null", NULL}
 	};
 
-	while (op[i].opcode)
+	for (i = 0; i <= 1; i++)
 	{
 		if (*(op[i].opcode) == *(token[0]))
 		{
 			op[i].f(stack, line_num);
-			break;
+			return (EXIT_SUCCESS);
 		}
-		i++;
 	}
-	if (op[i].opcode == NULL)
-	{
-		free_stack(stack);
-		fprintf(stderr, "L%i: unknown instruction %s\n", line_num,
-				token[i]);
-		return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
+	free_stack(stack);
+	fprintf(stderr, "L%i: unknown instruction %s\n", line_num, token[0]);
+	return (EXIT_FAILURE);
 }
 
 /**
@@ -80,7 +74,6 @@ int monty_push(stack_t **stack, char **token, unsigned int line_num)
 	new->next = *stack;
 	new->prev = NULL;
 	*stack = new;
-	free(token);
 	return (EXIT_SUCCESS);
 }
 
