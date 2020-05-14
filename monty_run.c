@@ -35,21 +35,12 @@ int monty_run(FILE *fd)
 			continue;
 		}
 		else if (strncmp(token[0], "push", 4) == 0)
-<<<<<<< HEAD
 			exit_status = monty_push(&stack, token, line_num);
-=======
-			monty_push(&stack, token, line_num);
->>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 		else
 			exit_status = execute(token, &stack, line_num);
 	}
-<<<<<<< HEAD
-	free_stack(&stack);
 	free(token);
-=======
-	free_dp(token, &stack);
-	fclose(fd);
->>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
+	free_stack(&stack);
 	if (line && *line == 0)
 	{
 		free(line);
@@ -81,13 +72,8 @@ char **tokening(char *line, char *delim)
 	if (token == NULL)
 	{
 		free(line);
-<<<<<<< HEAD
 		free(token);
 		exit(usage_error(0));
-=======
-		free(command);
-		usage_error(0);
->>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 	}
 	tokens = strtok(line, delim);
 	if (tokens == NULL)
@@ -98,19 +84,7 @@ char **tokening(char *line, char *delim)
 	}
 	while (tokens != NULL)
 	{
-<<<<<<< HEAD
 		token[i] = tokens;
-=======
-		command[i] = malloc(strlen(tokens) + 1);
-		if (command[i] == NULL)
-		{
-			free(line);
-			free_dp(command, NULL);
-			usage_error(0);
-		}
-		strcpy(command[i], tokens);
-		tokens = strtok(NULL, delim);
->>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 		i++;
 		tokens = strtok(NULL, delim);
 	}

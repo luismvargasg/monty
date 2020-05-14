@@ -50,15 +50,9 @@ char **tokening(char *line, char *delim);
 int execute(char **token, stack_t **stack, unsigned int line_num);
 int monty_push(stack_t **stack, char **token, unsigned int line_num);
 void free_stack(stack_t **stack);
-<<<<<<< HEAD
 int empty_line(char *line, char *delims);
 void monty_pall(stack_t **stack, unsigned int line_num);
-=======
-void free_token(char **token);
 int empty_line(char *line, char *delims);
-int monty_pall(stack_t **stack, unsigned int line_num);
->>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
-int init_stack(stack_t **stack);
 
 /*=========================================================================*/
 /*=========================        ERRORS       ===========================*/

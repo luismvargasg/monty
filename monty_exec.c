@@ -80,7 +80,6 @@ int monty_push(stack_t **stack, char **token, unsigned int line_num)
 		return (usage_error(0));
 
 	new->n = atoi(push[1]);
-<<<<<<< HEAD
 	if ((*stack) != NULL)
 		(*stack)->prev = new;
 	new->next = *stack;
@@ -89,35 +88,17 @@ int monty_push(stack_t **stack, char **token, unsigned int line_num)
 	free(push);
 	free(token);
 	return (EXIT_SUCCESS);
-=======
-	tmp = (*stack)->next;
-	new->prev = *stack;
-	new->next = tmp;
-	if (tmp)
-		tmp->prev = new;
-	(*stack)->next = new;
-	free(push);
-	free(token);
->>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 }
 
 /**
  * monty_pall - A function that prints the values of the stack_t.
  * @stack: The pointer to the top of a stack_t.
-<<<<<<< HEAD
  * @line_num: The number of the line.
  * Return: Nothing.
  */
 void monty_pall(stack_t **stack, unsigned int line_num)
 {
 	stack_t *tmp = *stack;
-=======
- * @line_num: Line number.
- */
-void monty_pall(stack_t **stack, unsigned int line_num)
-{
-	stack_t *tmp = (*stack)->next;
->>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 	(void)line_num;
 
 	while (tmp != NULL)
