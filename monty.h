@@ -53,7 +53,7 @@ void free_stack(stack_t **stack);
 /* monty_run.c */
 int monty_run(FILE *fd);
 char **tokening(char *line, char *delim);
- int empty_line(char *line, char *delims);
+int empty_line(char *line, char *delims);
 
 /* monty_exec.c */
 int execute(char **token, stack_t **stack, unsigned int line_num);
