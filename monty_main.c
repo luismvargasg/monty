@@ -15,14 +15,23 @@
 int main(int ac, char **av)
 {
 	FILE *fd = NULL;
+	int exit_status = EXIT_SUCCESS;
 
 	if (ac != 2)
-		usage_error(1);
-	fd = fopen(av[1], "r");
+		return (usage_error(1));
 
+	fd = fopen(av[1], "r");
 	if (fd == NULL)
+<<<<<<< HEAD
+		return (open_error(av[1]));
+
+	exit_status = monty_run(fd);
+	fclose(fd);
+	return (exit_status);
+=======
 		open_error(av[1]);
 	monty_run(fd);
 	exit(EXIT_SUCCESS);
 	return (0);
+>>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 }

@@ -12,11 +12,10 @@
  * @token: Tokane containing the opcode to execute.
  * @stack: Doubly linked list representation of a stack.
  * @line_num: Line number where the opcode was found.
- *
- * Return: Nothing.
+ * Return: EXIT_SUCCESS in success, or EXIT_FAILURE on failure.
  */
 
-void execute(char **token, stack_t **stack, unsigned int line_num)
+int execute(char **token, stack_t **stack, unsigned int line_num)
 {
 	unsigned int i = 0;
 
@@ -36,11 +35,12 @@ void execute(char **token, stack_t **stack, unsigned int line_num)
 	}
 	if (op[i].opcode == NULL)
 	{
-		free_dp(NULL, stack);
+		free_stack(stack);
 		fprintf(stderr, "L%i: unknown instruction %s\n", line_num,
 				token[i]);
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -48,39 +48,48 @@ void execute(char **token, stack_t **stack, unsigned int line_num)
   * @stack: The pointer to the stck struct.
   * @token: The pointer to command.
   * @line_num: The number of the line.
-  * Return: Nothing.
+  * Return: EXIT_SUCCESS on success, or EXIT_FAILURE on failure.
   */
-void monty_push(stack_t **stack, char **token, unsigned int line_num)
+int monty_push(stack_t **stack, char **token, unsigned int line_num)
 {
-	stack_t *tmp, *new;
+	stack_t *new;
 	char **push = NULL;
 	int i = 0;
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-	{
-		usage_error(0);
-		return;
-	}
 	push = tokening(token[0], " \0");
 	if (push[1] == NULL)
-	{
-		f_errors(0, line_num);
-		return;
-	}
+		return (f_errors(0, line_num));
+
 	while (push[1][i])
 	{
 		if (push[1][i] == '-' && i == 0)
 			continue;
+
 		if (push[1][i] < '0' || push[1][i] > '9')
 		{
-			free_dp(push, stack);
-			f_errors(0, line_num);
-			return;
+			free(push);
+			free(token);
+			free_stack(stack);
+			return (f_errors(0, line_num));
 		}
 		i++;
 	}
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		return (usage_error(0));
+
 	new->n = atoi(push[1]);
+<<<<<<< HEAD
+	if ((*stack) != NULL)
+		(*stack)->prev = new;
+	new->next = *stack;
+	new->prev = NULL;
+	*stack = new;
+	free(push);
+	free(token);
+	return (EXIT_SUCCESS);
+=======
 	tmp = (*stack)->next;
 	new->prev = *stack;
 	new->next = tmp;
@@ -89,16 +98,26 @@ void monty_push(stack_t **stack, char **token, unsigned int line_num)
 	(*stack)->next = new;
 	free(push);
 	free(token);
+>>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 }
 
 /**
  * monty_pall - A function that prints the values of the stack_t.
  * @stack: The pointer to the top of a stack_t.
+<<<<<<< HEAD
+ * @line_num: The number of the line.
+ * Return: Nothing.
+ */
+void monty_pall(stack_t **stack, unsigned int line_num)
+{
+	stack_t *tmp = *stack;
+=======
  * @line_num: Line number.
  */
 void monty_pall(stack_t **stack, unsigned int line_num)
 {
 	stack_t *tmp = (*stack)->next;
+>>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 	(void)line_num;
 
 	while (tmp != NULL)

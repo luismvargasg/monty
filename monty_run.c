@@ -11,15 +11,13 @@
  * @fd: File descriptor for an open Monty bytecodes script.
  * Return: EXIT_SUCCESS on success, or EXIT_FAILURE on error.
  */
-void monty_run(FILE *fd)
+int monty_run(FILE *fd)
 {
 	stack_t *stack = NULL;
 	char *line = NULL, **token = NULL, delim[] = "\n\0";
 	size_t len = 0;
-	unsigned int line_num = 0;
+	unsigned int line_num = 0, exit_status = EXIT_SUCCESS;
 
-	if (init_stack(&stack) == 1)
-		exit(EXIT_FAILURE);
 	while (getline(&line, &len, fd) != -1)
 	{
 		line_num++;
@@ -28,28 +26,37 @@ void monty_run(FILE *fd)
 		{
 			if (empty_line(line, delim))
 				continue;
-			free_dp(NULL, &stack);
-			usage_error(0);
+			free_stack(&stack);
+			return (usage_error(0));
 		}
 		else if (token[0][0] == '#')
 		{
-			free_dp(token, NULL);
+			free(token);
 			continue;
 		}
 		else if (strncmp(token[0], "push", 4) == 0)
+<<<<<<< HEAD
+			exit_status = monty_push(&stack, token, line_num);
+=======
 			monty_push(&stack, token, line_num);
+>>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 		else
-			execute(token, &stack, line_num);
+			exit_status = execute(token, &stack, line_num);
 	}
+<<<<<<< HEAD
+	free_stack(&stack);
+	free(token);
+=======
 	free_dp(token, &stack);
 	fclose(fd);
+>>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 	if (line && *line == 0)
 	{
 		free(line);
-		usage_error(0);
+		return (usage_error(0));
 	}
 	free(line);
-	exit(EXIT_SUCCESS);
+	return (exit_status);
 }
 
 /**
@@ -60,7 +67,7 @@ void monty_run(FILE *fd)
  */
 char **tokening(char *line, char *delim)
 {
-	char *tokens = NULL, **command = NULL;
+	char *tokens = NULL, **token = NULL;
 	size_t bufsize = 0;
 	int i = 0;
 
@@ -70,16 +77,30 @@ char **tokening(char *line, char *delim)
 	bufsize = strlen(line);
 	if (bufsize == 0)
 		return (NULL);
-	command = malloc((bufsize + 1) * sizeof(char *));
-	if (command == NULL)
+	token = malloc(bufsize * sizeof(char *));
+	if (token == NULL)
 	{
 		free(line);
+<<<<<<< HEAD
+		free(token);
+		exit(usage_error(0));
+=======
 		free(command);
 		usage_error(0);
+>>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 	}
 	tokens = strtok(line, delim);
+	if (tokens == NULL)
+	{
+		free(token);
+		free(line);
+		return (NULL);
+	}
 	while (tokens != NULL)
 	{
+<<<<<<< HEAD
+		token[i] = tokens;
+=======
 		command[i] = malloc(strlen(tokens) + 1);
 		if (command[i] == NULL)
 		{
@@ -89,10 +110,12 @@ char **tokening(char *line, char *delim)
 		}
 		strcpy(command[i], tokens);
 		tokens = strtok(NULL, delim);
+>>>>>>> 12c4e77fecc5630e46f7e63305e6b4f70e69cd31
 		i++;
+		tokens = strtok(NULL, delim);
 	}
-	command[i] = NULL;
-	return (command);
+	token[i] = '\0';
+	return (token);
 }
 
 /**
@@ -117,27 +140,4 @@ int empty_line(char *line, char *delims)
 	}
 
 	return (1);
-}
-
-/**
- * init_stack - A function that initializes a stack_t stack with beginning
- *              stack and ending queue nodes.
- * @stack: A pointer to an unitialized stack_t stack.
- * Return: 1 If an error occurs, or 0 in Otherwise.
- */
-int init_stack(stack_t **stack)
-{
-	stack_t *s;
-
-	s = malloc(sizeof(stack_t));
-	if (s == NULL)
-		usage_error(0);
-
-	s->n = STACK;
-	s->prev = NULL;
-	s->next = NULL;
-
-	*stack = s;
-
-	return (0);
 }
