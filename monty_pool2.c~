@@ -39,19 +39,19 @@ void monty_div(stack_t **stack, unsigned int line_number)
 {
 	int temp;
 
-	if (*stack == NULL || (*stack)->next == NULL)
-	{
-		f_errors(6, line_number);
-		exit(EXIT_FAILURE);
-	}
+        if (*stack == NULL || (*stack)->next == NULL)
+        {
+                f_errors(6, line_number);
+                exit(EXIT_FAILURE);
+        }
 	if ((*stack)->n == 0)
 	{
-		f_errors(7, line_number);
-		exit(EXIT_FAILURE);
+                f_errors(7, line_number);
+                exit(EXIT_FAILURE);
 	}
-	temp = (*stack)->next->n / (*stack)->n;
-	(*stack)->next->n = temp;
-	monty_pop(stack, line_number);
+        temp = (*stack)->next->n / (*stack)->n;
+        (*stack)->next->n = temp;
+        monty_pop(stack, line_number);
 }
 
 /**
@@ -66,17 +66,17 @@ void monty_mod(stack_t **stack, unsigned int line_number)
 {
 	int temp;
 
-	if (*stack == NULL || (*stack)->next == NULL)
-	{
-		f_errors(9, line_number);
-		exit(EXIT_FAILURE);
-	}
+        if (*stack == NULL || (*stack)->next == NULL)
+        {
+                f_errors(9, line_number);
+                exit(EXIT_FAILURE);
+        }
 	if ((*stack)->n == 0)
 	{
-		f_errors(7, line_number);
-		exit(EXIT_FAILURE);
+                f_errors(7, line_number);
+                exit(EXIT_FAILURE);
 	}
-	temp = (*stack)->next->n % (*stack)->n;
-	(*stack)->next->n = temp;
-	monty_pop(stack, line_number);
+        temp = (*stack)->next->n % (*stack)->n;
+        (*stack)->next->n = temp;
+        monty_pop(stack, line_number);
 }
