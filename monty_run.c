@@ -24,7 +24,7 @@ int monty_run(FILE *fd)
 		if (empty_line(line, delim))
 			continue;
 		token = tokening(line, delim);
-		if (token[0][0] == '#' || strncmp(token[0], "nop", 3) == 0)
+		if (token[0][0] == '#' || strcmp(token[0], "nop") == 0)
 		{
 			free(token);
 			continue;
