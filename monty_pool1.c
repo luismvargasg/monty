@@ -103,7 +103,7 @@ void monty_sub(stack_t **stack, unsigned int line_number)
 		f_errors(4, line_number);
 		exit(EXIT_FAILURE);
 	}
-	temp = (*stack)->n - (*stack)->next->n;
+	temp = (*stack)->next->n - (*stack)->n;
 	(*stack)->next->n = temp;
 	monty_pop(stack, line_number);
 }
