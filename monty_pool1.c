@@ -100,7 +100,7 @@ void monty_sub(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		f_errors(4, line_number);
+		f_errors(5, line_number);
 		exit(EXIT_FAILURE);
 	}
 	temp = (*stack)->next->n - (*stack)->n;

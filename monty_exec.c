@@ -29,10 +29,11 @@ int execute(char **token, stack_t **stack, unsigned int line_num)
 		{"mul", monty_mul},
 		{"div", monty_div},
 		{"mod", monty_mod},
+		{"pchar", monty_pchar},
 		{"null", NULL}
 	};
 
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 11; i++)
 	{
 		if (strcmp(op[i].opcode, token[0]) == 0)
 		{
