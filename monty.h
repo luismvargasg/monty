@@ -67,6 +67,11 @@ void monty_swap(stack_t **stack, unsigned int line_num);
 void monty_sub(stack_t **stack, unsigned int line_num);
 void monty_add(stack_t **stack, unsigned int line_num);
 
+/* monty_pool2.c */
+void monty_mul(stack_t **stack, unsigned int line_number);
+void monty_div(stack_t **stack, unsigned int line_number);
+void monty_mod(stack_t **stack, unsigned int line_number);
+
 /*=========================================================================*/
 /*=========================        ERRORS       ===========================*/
 /*=========================================================================*/

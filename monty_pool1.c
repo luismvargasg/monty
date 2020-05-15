@@ -74,13 +74,15 @@ void monty_swap(stack_t **stack, unsigned int line_number)
  */
 void monty_add(stack_t **stack, unsigned int line_number)
 {
-	if ((*stack)->next == NULL)
+	int temp;
+
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		f_errors(4, line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	(*stack)->next->next->n += (*stack)->next->n;
+	temp = (*stack)->n + (*stack)->next->n;
+	(*stack)->next->n = temp;
 	monty_pop(stack, line_number);
 }
 
@@ -94,12 +96,14 @@ void monty_add(stack_t **stack, unsigned int line_number)
  */
 void monty_sub(stack_t **stack, unsigned int line_number)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-	{
-		f_errors(5, line_number);
-		exit(EXIT_FAILURE);
-	}
+	int temp;
 
-	(*stack)->next->next->n -= (*stack)->next->n;
-	monty_pop(stack, line_number);
+        if (*stack == NULL || (*stack)->next == NULL)
+        {
+                f_errors(4, line_number);
+                exit(EXIT_FAILURE);
+        }
+        temp = (*stack)->n - (*stack)->next->n;
+        (*stack)->next->n = temp;
+        monty_pop(stack, line_number);
 }

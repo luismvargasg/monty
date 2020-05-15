@@ -26,6 +26,9 @@ int execute(char **token, stack_t **stack, unsigned int line_num)
 		{"swap", monty_swap},
 		{"add", monty_add},
 		{"sub", monty_sub},
+		{"mul", monty_mul},
+		{"div", monty_div},
+		{"mod", monty_mod},
 		{"null", NULL}
 	};
 
