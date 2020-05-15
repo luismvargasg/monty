@@ -18,7 +18,7 @@ void monty_pint(stack_t **stack, unsigned int line_number)
 	if (!tmp)
 	{
 		f_errors(1, line_number);
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	printf("%d\n", tmp->n);
