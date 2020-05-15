@@ -133,3 +133,8 @@ echo "HBTN: nop"
 echo " ---exit = 0"
 echo $?
 
+echo "**********     bytecode  17.m   **************"
+echo "HBTN: pushes"
+./monty bytecodes/17.m
+echo " ---exit = 1"
+echo $?
