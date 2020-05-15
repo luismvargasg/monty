@@ -55,7 +55,7 @@ void monty_swap(stack_t **stack, unsigned int line_number)
 {
 	int tmp;
 
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	if ((*stack)->next == NULL)
 	{
 		f_errors(3, line_number);
 		exit(EXIT_FAILURE);
@@ -74,7 +74,7 @@ void monty_swap(stack_t **stack, unsigned int line_number)
  */
 void monty_add(stack_t **stack, unsigned int line_number)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	if ((*stack)->next == NULL)
 	{
 		f_errors(4, line_number);
 		exit(EXIT_FAILURE);
