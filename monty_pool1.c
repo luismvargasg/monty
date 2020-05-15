@@ -13,13 +13,15 @@
  */
 void monty_pint(stack_t **stack, unsigned int line_number)
 {
-	if ((*stack)->next == NULL)
+	stack_t *tmp = *stack;
+
+	if (!tmp)
 	{
 		f_errors(1, line_number);
 		return;
 	}
 
-	printf("%d\n", (*stack)->next->n);
+	printf("%d\n", tmp->n);
 }
 
 
@@ -30,19 +32,18 @@ void monty_pint(stack_t **stack, unsigned int line_number)
  */
 void monty_pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *next = NULL;
+	stack_t *tmp = *stack;
 
-	if ((*stack)->next == NULL)
+	if (!tmp)
 	{
 		f_errors(2, line_number);
 		return;
 	}
 
-	next = (*stack)->next->next;
-	free((*stack)->next);
-	if (next)
-		next->prev = *stack;
-	(*stack)->next = next;
+	if (tmp->next)
+		tmp->next->prev = tmp->prev;
+	*stack = tmp->next;
+	free(tmp);
 }
 
 /**
@@ -52,7 +53,7 @@ void monty_pop(stack_t **stack, unsigned int line_number)
  */
 void monty_swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
+	stack_t *tmp = *stack;
 
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
