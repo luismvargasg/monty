@@ -37,7 +37,7 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 	if (!tmp)
 	{
 		f_errors(2, line_number);
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	if (tmp->next)
@@ -47,32 +47,26 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * monty_swap - A function that waps the two values at the top of stack.
+ * monty_swap - A function that swaps the two values at the top of stack.
  * @stack: The pointer to the top of a stack list.
  * @line_number: The line number of a Monty bytecodes file.
  */
 void monty_swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = *stack;
+	int tmp;
 
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		f_errors(3, line_number);
-		return;
+		exit(EXIT_FAILURE);
 	}
-
-	tmp = (*stack)->next->next;
-	(*stack)->next->next = tmp->next;
-	(*stack)->next->prev = tmp;
-	if (tmp->next)
-		tmp->next->prev = (*stack)->next;
-	tmp->next = (*stack)->next;
-	tmp->prev = *stack;
-	(*stack)->next = tmp;
+	tmp = (*stack)->next->n;
+	(*stack)->next->n = (*stack)->n;
+	(*stack)->n = tmp;
 }
 
 /**
- * monty_add - A function that dds the two top values of a stack.
+ * monty_add - A function that adds the two top values of a stack.
  * @stack: The pointer to the stack list.
  * @line_number: The line number of a Monty bytecodes file.
  * Description: The result is stored in the second value node
@@ -83,7 +77,7 @@ void monty_add(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		f_errors(4, line_number);
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	(*stack)->next->next->n += (*stack)->next->n;
@@ -103,7 +97,7 @@ void monty_sub(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		f_errors(5, line_number);
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	(*stack)->next->next->n -= (*stack)->next->n;
