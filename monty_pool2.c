@@ -123,11 +123,13 @@ void monty_pstr(stack_t **stack, unsigned int line_number)
 	}
 	while (tmp != NULL)
 	{
-		if (tmp->n == 0)
-			break;
-		else if (tmp->n > 0 && tmp->n <= 127)
+		if (tmp->n > 0 && tmp->n <= 127)
+		{
 			printf("%c", tmp->n);
-		tmp = tmp->next;
+			tmp = tmp->next;
+		}
+		else
+			break;
 	}
 	printf("\n");
 }
