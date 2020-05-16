@@ -113,20 +113,20 @@ void monty_pchar(stack_t **stack, unsigned int line_number)
  */
 void monty_pstr(stack_t **stack, unsigned int line_number)
 {
-	int number = 0;
 	stack_t *tmp = *stack;
+	(void)line_number;
 
+	if (stack == NULL || *stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
 	while (tmp != NULL)
 	{
-		number = tmp->n;
-		if (number < 0 || number > 127)
-		{
-			f_errors(10, line_number);
-			exit(EXIT_FAILURE);
-		}
-		if (number == 0)
+		if (tmp->n == 0)
 			break;
-		printf("%c", tmp->n);
+		else if (tmp->n > 0 && tmp->n <= 127)
+			printf("%c", tmp->n);
 		tmp = tmp->next;
 	}
 	printf("\n");
