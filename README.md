@@ -60,19 +60,19 @@ user@ubuntu:~/monty$
 
 | **opcode** | **Description** |
 |----------|-----------------|
-| <ul><li>[ ] push</li></ul> | Pushes an element to the stack. |
-| <ul><li>[ ] pall</li></ul> | Prints all the values on the stack, starting from the top of the stack. |
-| <ul><li>[ ] pint</li></ul> | Prints the value at the top of the stack, followed by a new line. |
-| <ul><li>[ ] pop</li></ul> | Removes the top element of the stack. |
-| <ul><li>[ ] swap</li></ul> | Swaps the top two elements of the stack. |
-| <ul><li>[ ] add</li></ul> | Adds the top two elements of the stack. |
-| <ul><li>[ ] nop</li></ul> | Doesn\'t do anything. |
-| <ul><li>[ ] sub</li></ul> | Subtracts the top element of the stack from the second top element of the stack. |
-| <ul><li>[ ] div</li></ul> | Divides the second top element of the stack by the top element of the stack. |
-| <ul><li>[ ] mul</li></ul> | Multiplies the second top element of the stack with the top element of the stack. |
-| <ul><li>[ ] mod</li></ul> | Computes the rest of the division of the second top element of the stack by the top element of the stack. |
-| <ul><li>[ ] pchar</li></ul> | Prints the char at the top of the stack, followed by a new line. |
-| <ul><li>[ ] pstr</li></ul> | Prints the string starting at the top of the stack, followed by a new line. |
+| <ul><li>[x] push</li></ul> | Pushes an element to the stack. |
+| <ul><li>[x] pall</li></ul> | Prints all the values on the stack, starting from the top of the stack. |
+| <ul><li>[x] pint</li></ul> | Prints the value at the top of the stack, followed by a new line. |
+| <ul><li>[x] pop</li></ul> | Removes the top element of the stack. |
+| <ul><li>[x] swap</li></ul> | Swaps the top two elements of the stack. |
+| <ul><li>[x] add</li></ul> | Adds the top two elements of the stack. |
+| <ul><li>[x] nop</li></ul> | Doesn\'t do anything. |
+| <ul><li>[x] sub</li></ul> | Subtracts the top element of the stack from the second top element of the stack. |
+| <ul><li>[x] div</li></ul> | Divides the second top element of the stack by the top element of the stack. |
+| <ul><li>[x] mul</li></ul> | Multiplies the second top element of the stack with the top element of the stack. |
+| <ul><li>[x] mod</li></ul> | Computes the rest of the division of the second top element of the stack by the top element of the stack. |
+| <ul><li>[x] pchar</li></ul> | Prints the char at the top of the stack, followed by a new line. |
+| <ul><li>[x] pstr</li></ul> | Prints the string starting at the top of the stack, followed by a new line. |
 | <ul><li>[ ] rotl</li></ul> | Rotates the stack to the top. |
 | <ul><li>[ ] rotr</li></ul> | Rotates the stack to the bottom. |
 | <ul><li>[ ] stack</li></ul> | Sets the format of the data to a stack (LIFO). This is the default behavior of the program. |
