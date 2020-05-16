@@ -116,11 +116,6 @@ void monty_pstr(stack_t **stack, unsigned int line_number)
 	int number = 0;
 	stack_t *tmp = *stack;
 
-	if (!tmp)
-	{
-		f_errors(11, line_number);
-		exit(EXIT_FAILURE);
-	}
 	while (tmp != NULL)
 	{
 		number = tmp->n;
