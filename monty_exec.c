@@ -32,10 +32,11 @@ int execute(char **token, stack_t **stack, unsigned int line_num)
 		{"pchar", monty_pchar},
 		{"pstr", monty_pstr},
 		{"rotl", monty_rotl},
+		{"rotr", monty_rotr},
 		{"null", NULL}
 	};
 
-	for (i = 0; i < 13; i++)
+	for (i = 0; i < 14; i++)
 	{
 		if (strcmp(op[i].opcode, token[0]) == 0)
 		{

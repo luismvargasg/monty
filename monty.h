@@ -76,6 +76,7 @@ void monty_pstr(stack_t **stack, unsigned int line_number);
 
 /* monty_pool3.c */
 void monty_rotl(stack_t **stack, unsigned int line_number);
+void monty_rotr(stack_t **stack, unsigned int line_number);
 
 /*=========================================================================*/
 /*=========================        ERRORS       ===========================*/
