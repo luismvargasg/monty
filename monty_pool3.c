@@ -19,12 +19,14 @@ void monty_rotl(stack_t **stack, unsigned int line_number)
 	stack_t *cursor = *stack;
 	(void)line_number;
 
-	if (cursor != NULL)
-		temp = cursor->n;
-	while (cursor->next != NULL)
+	if (*stack)
 	{
-		cursor->n = cursor->next->n;
-		cursor = cursor->next;
+		temp = cursor->n;
+		while (cursor->next != NULL)
+		{
+			cursor->n = cursor->next->n;
+			cursor = cursor->next;
+		}
+		cursor->n = temp;
 	}
-	cursor->n = temp;
 }
